@@ -3,13 +3,12 @@ import {SafeAreaView,StyleSheet,View,Text,TextInput, TouchableHighlight} from 'r
 
 export default function App(){
 
-		const [valor1, setValor1]=useState(0)
-    const [valor2, setValor2]=useState(0)
+		const [operacao, setOperacao]=useState(0)
     const [resultado, setResultado]=useState(0)
 
-    const soma=()=>{
+    const operar=()=>{
 
-      setResultado(valor1+valor2)
+      setResultado(eval(operacao))
     }
 
 		return ( 
@@ -18,30 +17,24 @@ export default function App(){
 
 				<TextInput
 					style={estilos.display}
-					value={String(valor1)}
-          onChangeText={(texto)=>{setValor1(texto)}}
-          keyboardType='numeric'
-          ></TextInput>
-
-          <TextInput
-          style={estilos.display}
-          value={String(valor2)}
-          onChangeText={(texto)=>{setValor2(texto)}}
-          keyboardType='numeric'
+					value={String(operacao)}
+          onChangeText={(texto)=>{setOperacao(texto)}}
+          //keyboardType='numeric'
           ></TextInput>
 
           <TextInput
           style={estilos.display}
           value={String(resultado)}
-          onChangeText={(texto)=>{setResultado(texto)}}
-          keyboardType='numeric'
+          //onChangeText={(texto)=>{setResultado(texto)}}
+         // keyboardType='numeric'
           ></TextInput>
+
 
           <TouchableHighlight
             style={estilos.btn}
-            onPress={()=>soma()}
+            onPress={()=>operar()}
 
-          ><Text>SOMAR</Text>
+          ><Text>operar</Text>
           </TouchableHighlight>
 
 			</SafeAreaView>
@@ -72,3 +65,6 @@ const estilos= StyleSheet.create({
   }
 
 });
+
+
+
