@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {SafeAreaView,StyleSheet,View,Text,TextInput, TouchableHighlight} from 'react-native';
-
+import Display from './componentes/display'
+import Btn from './componentes/botoes'
 export default function App(){
 
 		const [operacao, setOperacao]=useState(0)
@@ -14,28 +15,32 @@ export default function App(){
 		return ( 
 			<SafeAreaView style={estilos.container}>
 				<Text>Calculadora</Text>
+        
+        <Display valor={0} res={0}/>
+        <View style={estilos.botoes}>
+          <Btn label='AC' ac aoClicar={()=>{}}></Btn>
+          <Btn label='(' aoClicar={()=>{}}></Btn>
+          <Btn label=')' aoClicar={()=>{}}></Btn>
+          <Btn label='/' operacao aoClicar={()=>{}}></Btn>
+          <Btn label='7' aoClicar={()=>{}}></Btn>
+          <Btn label='8' aoClicar={()=>{}}></Btn>
+          <Btn label='9' aoClicar={()=>{}}></Btn>
+          <Btn label='*' operacao aoClicar={()=>{}}></Btn>
+          <Btn label='4' aoClicar={()=>{}}></Btn>
+          <Btn label='5' aoClicar={()=>{}}></Btn>
+          <Btn label='6' aoClicar={()=>{}}></Btn>
+          <Btn label='-' operacao aoClicar={()=>{}}></Btn>
+          <Btn label='1' aoClicar={()=>{}}></Btn>
+          <Btn label='2' aoClicar={()=>{}}></Btn>
+          <Btn label='3' aoClicar={()=>{}}></Btn>
+          <Btn label='+' operacao aoClicar={()=>{}}></Btn>
+          <Btn label='0' aoClicar={()=>{}}></Btn>
+          <Btn label='.' aoClicar={()=>{}}></Btn>
+          <Btn label='<-' bs aoClicar={()=>{}}></Btn>
+          <Btn label='=' igual aoClicar={()=>{}}></Btn>
 
-				<TextInput
-					style={estilos.display}
-					value={String(operacao)}
-          onChangeText={(texto)=>{setOperacao(texto)}}
-          //keyboardType='numeric'
-          ></TextInput>
-
-          <TextInput
-          style={estilos.display}
-          value={String(resultado)}
-          //onChangeText={(texto)=>{setResultado(texto)}}
-         // keyboardType='numeric'
-          ></TextInput>
-
-
-          <TouchableHighlight
-            style={estilos.btn}
-            onPress={()=>operar()}
-
-          ><Text>operar</Text>
-          </TouchableHighlight>
+         
+        </View>
 
 			</SafeAreaView>
 
@@ -50,18 +55,20 @@ export default function App(){
 
 const estilos= StyleSheet.create({
 	container:{
-		padding:10
+    flex:1,
+    justifyContent:'flex-start',
+    alignItems:'center'
+		
 	},
-	display:{
-		borderWidth:1,
-		borderRadius:10
-	},
-
-  btn:{
-    backgroundColor:'#aaa',
+	
+  display:{
     padding:10,
-    margin:10,
-    width:100
+    backgroundColor:'#333'
+  },
+
+  botoes:{
+    flexDirection:'row',
+    flexWrap:'wrap'
   }
 
 });
